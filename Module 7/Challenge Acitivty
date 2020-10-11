@@ -1,0 +1,93 @@
+import pandas as pd
+import json
+import sys
+import os
+
+
+
+def main():
+    # Reads in JSON file
+    fileName = '/Users/schaetay/Documents/School/Fall 2020/Python/Module 7/superbowltweets.json'
+    ffile = open(fileName,'r')
+    tweetData = json.loads(ffile.read())
+
+    # For loop that searches for the given sub text in json file
+    # Tweets that contain the word 'pat'
+
+    def has_pats():
+        pats = 0
+        for i in tweetData:
+            string = (i['full_text'])
+            substring = ('Pat')
+            if (substring in string):
+                pats = pats + 1
+            else:
+                False
+        print(pats)
+
+    def has_rams():
+        rams = 0
+        for i in tweetData:
+            string = (i['full_text'])
+            substring = ('Ram')
+            if (substring in string):
+                rams = rams + 1
+            else:
+                False
+        print(rams)
+
+    def has_both():
+        both = 0
+        for i in tweetData:
+            string = (i['full_text'])
+            substring = ('Ram' and 'Pat')
+            if (substring in string):
+                both = both + 1
+            else:
+                False
+        print(both)
+
+    def has_neither():
+        neither = 0
+        for i in tweetData:
+            string = (i['full_text'])
+            substring = ('Pat' or 'Ram')
+            if (substring in string):
+                False
+            else:
+                neither = neither + 1
+        print(neither)
+
+    def full_text():
+        for i in tweetData:
+            string = (i['full_text'])
+            print(string)
+    
+    has_pats()
+    has_rams()
+    has_both()
+    has_neither()
+    #full_text()
+   
+    
+    
+    
+    
+            
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    main()
