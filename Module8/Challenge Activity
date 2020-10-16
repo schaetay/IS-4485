@@ -1,0 +1,42 @@
+import json
+import sys
+import os
+import csv
+import ast
+
+def main():
+    fileName = '/Users/schaetay/Documents/School/Fall 2020/Python/Module 8/station-data.json'
+    ffile = open(fileName,'r')
+    mentalHealth = json.loads(ffile.read())
+
+
+    for var in mentalHealth:
+        newStr = str(var)
+        Dict = ast.literal_eval(newStr) 
+        dictValues = Dict.values()
+        
+
+    dictKeys = Dict.keys()
+    
+
+    
+  
+    
+    
+
+    fileCSV = '/Users/schaetay/Documents/School/Fall 2020/Python/Module 8/station-data-formatted.csv'
+    with open(fileCSV, 'w') as csvfile: 
+        writer = csv.DictWriter(csvfile, fieldnames= dictValues) 
+        writer.writeheader()
+        for data in Dict:
+            writer.writerow(data)
+            
+            
+  #Error: AttributeError: 'str' object has no attribute 'keys'
+  
+  
+if __name__ == '__main__':
+    main()
+
+
+    
