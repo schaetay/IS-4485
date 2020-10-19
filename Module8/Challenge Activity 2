@@ -1,0 +1,37 @@
+import json
+import sys
+import os
+import csv
+import ast
+
+def main():
+    fileName = "example_2.json"
+    fileName = os.path.join(/Users/schaetay/Documents/School/Fall 2020/Python/Module 8/station-data.json, fileName)
+    print(f"{fileName}")
+    ffile = open(fileName,'r')
+    mentalHealth = json.loads(ffile.read())
+
+    
+    
+    dictKeys = mentalHealth['quiz'].keys()
+    print(dictKeys)
+
+    
+  
+    
+    
+
+    fileCSV = '/Users/schaetay/Documents/School/Fall 2020/Python/Module 8/station-data-formatted.csv'
+    jsonTopLayer = mentalHealth['quiz']
+    with open(fileCSV, 'w+') as csvfile: 
+        writer = csv.DictWriter(csvfile, fieldnames= dictKeys) 
+        writer.writeheader()
+        for data in jsonTopLayer:
+            writer.writerow({data:jsonTopLayer[data]})
+            
+            
+
+  
+  
+if __name__ == '__main__':
+    main()
