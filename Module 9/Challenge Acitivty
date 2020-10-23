@@ -18,7 +18,7 @@ def print_rows(row_list):
 def main():
 
     # XML file absolute path
-    fileName = '/Users/schaetay/Documents/School/Fall 2020/Python/Module 9/leading-cause-test.xml'
+    fileName = '/Users/schaetay/Documents/School/Fall 2020/Python/Module 9/leading_causes_of_death.xml'
 
     tree = ET.parse(fileName)
     root = tree.getroot()
