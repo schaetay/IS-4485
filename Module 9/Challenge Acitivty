@@ -1,0 +1,39 @@
+from xml.etree import ElementTree as ET
+
+# Function grabs each row and turns into dictonary 
+def process_row(row):
+    temp_dict = {}
+    temp_dict['id'] = row.attrib['_id']
+    for row_dict in row:
+        temp_dict[row_dict.tag] = row_dict.text
+    return temp_dict
+
+# Function to take list cod_list and enumerates each dict in list and then formats for desired output
+def print_rows(row_list):
+    userInput = input("Enter a year (yyyy): ")
+    for index, i in enumerate(row_list):
+        if i['year'] == userInput:
+            print('Record'+ ' ' + str(index) + ' ' + '(id: ' + i['id'] + '): During ' + i['year'] + ' ' + 'the leading cause of death in ' + i['state'] + ' ' + 'was' + ' ' + i['cause_name'])
+
+def main():
+
+    # XML file absolute path
+    fileName = '/Users/schaetay/Documents/School/Fall 2020/Python/Module 9/leading-cause-test.xml'
+
+    tree = ET.parse(fileName)
+    root = tree.getroot()
+
+    # Pulls data_rows tag in xml fileName
+    data_rows_node = root.find('data_rows')
+
+    cod_list = []
+
+    # Takes returned value from proccess_row function and appends to a list cod_list
+    for node in data_rows_node:
+        pr = process_row(node)
+        cod_list.append(pr)     
+
+    print_rows(cod_list)
+
+if __name__ == '__main__':
+    main()
